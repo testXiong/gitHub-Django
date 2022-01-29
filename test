@@ -1,0 +1,86 @@
+
+第1堂课：2022-01-09
+一项目结构：
+1.DjangoVenv 是项目名
+2. 和项目名同名的目录存放Django的相关配置文件
+3. DjangoDev03/asgi.py ASGI异步服务器的相关配置
+4. DjangoDev03/settings.py 存放是Django全局配置信息
+5. DjangoDev03/urls.py  存放全局路由表
+6. DjangoDev03/wsgi.py  在部署Django项目时，使用wsgi服务器配置信息
+7. db.sqlite3 Django默认使用的sqlite文本数据库
+8. manage.py Django提供的命令行操作工具，开发阶段使用它来启用项目和数据库的迁移
+
+二、创建一个功能
+1.先创建子应用：
+2.创建子应用 需要把子应用加入 项目settings.py 全局配置文件中,添加APP信息
+  加入 INSTALLED_APPS方法，规则 '[项目名].apps.项目名大写Config
+3.projects/views.py中，来创建相关功能（视图函数） ps:暂时未讲到
+4.在DjangoDev03/url.py全局路由表中，添加路由信息
+
+三、子应用
+1.Django最小功能模块，会以应用写形式呈现
+2.方便重用
+3.结构更清晰
+
+四、子应用结构
+1.projects/migrations  存放数据库迁移相关信息
+2.projects/admin.py 为admin站点的配置信息
+3.projects/apps.py  存放的是app标签等相关信息
+4.projects/models.py 存放数据库模型相关信息
+5.projects/test.py  存放的当前应用单元测试相关信息
+6.projects/views.py  主要定义相关功能
+
+第2堂课：2022-01-16
+一、方法视图
+使用request.method=="GET" 做请求类型判断，根据请求的类型返回。
+return 返回语句 HttpRequest()
+
+二、类视图
+使用Vies 类视图前要先调用django
+from  django.views import View
+路径在调用时，只能使用固定写法 as_view()
+
+三、调用接口时，返回一个HTML的界面
+ A,视图MVT模式
+    1.在子应用中创建一个存储html的文件夹 templates
+    2.在templates中创建一个html5, demo.html
+    3.因为是前后端分离项目，需要把templates全局路径放入 django->settings的templates的DIRS当中
+    DIRS:[os.path.join(BASE_DIR,'templates')]
+    4.插入html 模版 定义
+    [% for  projects in  date %]
+    [% endfor %]
+     三个参数，locast为上传当前方法的列表
+     render(request,"模版",locals())
+     5. JAVA中的 MVC 等于  Django中MVT
+       data 相当于M
+       "demo.html"  相当于模版 T
+        视图相当于  V
+     6.django中的MVC相当于是MVT
+ B.两种开发模式，前后端分离
+ request.GET.getlist('username') 获取查询字符串参数
+
+ 四、导包的流程
+ 1.最上面放系统包
+ 2.第二层再放每三方包
+ 3.最后放我们自己的包
+
+ 问题：
+ 1.模版渲染的形式，把这种开发模式叫做前后端不分离，有什么特点？
+ 2.后端会控制页面显示吗？
+ 3.把后端返回json(html)格式的数据，这种开发模式，叫做前后端分离
+
+
+
+
+第2堂课：2022-01-22
+一、ORM框架
+二、pyCharm集成版本管理
+三、HttpResponse返回信息
+
+
+
+000000000000   #TODO
+
+
+----------   #TODO
+
